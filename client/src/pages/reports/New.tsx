@@ -10,7 +10,7 @@ import {
   useBoilerplate,
   usePageTitle
 } from "components/Page"
-import { Event, Person, Report } from "models"
+import { Event, Person, Position, Report } from "models"
 import { reportTour } from "pages/GuidedTour"
 import React, { useContext } from "react"
 import { connect } from "react-redux"
@@ -113,12 +113,24 @@ const ReportNewConditional = ({
   initInvisibleFields(report, Settings.fields.report.customFields)
 
   if (currentUser && currentUser.uuid) {
-    const person = new Person(currentUser)
-    person.primary = true
-    person.author = true
-    person.attendee = true
-    person.interlocutor = false
-    report.reportPeople.push(person)
+    const reportPerson = new Person(currentUser)
+    reportPerson.primary = true
+    reportPerson.author = true
+    reportPerson.attendee = true
+    reportPerson.interlocutor = false
+    reportPerson.positionInReport = Position.filterClientSideFields(
+      currentUser.position,
+      "organization",
+      "location",
+      "descendantOrgs",
+      "responsibleTasks",
+      "authorizationGroupsAdministrated",
+      "isApprover",
+      "associatedPositions",
+      "notes",
+      "emailAddresses"
+    )
+    report.reportPeople.push(reportPerson)
   }
   const reportInitialValues = Object.assign(
     report,

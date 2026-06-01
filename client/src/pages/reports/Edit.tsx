@@ -54,6 +54,12 @@ const GQL_GET_REPORT = gql`
             ${gqlEntityFieldsMap.Location}
           }
         }
+        additionalPositions {
+          ${gqlEntityFieldsMap.Position}
+          organization {
+            ${gqlEntityFieldsMap.Organization}
+          }
+        }
         previousPositions {
           ${gqlPreviousPositionsFields}
           position {
@@ -64,6 +70,15 @@ const GQL_GET_REPORT = gql`
             location {
               ${gqlEntityFieldsMap.Location}
             }
+          }
+        }
+        positionInReport {
+          ${gqlEntityFieldsMap.Position}
+          organization {
+            ${gqlEntityFieldsMap.Organization}
+          }
+          location {
+            ${gqlEntityFieldsMap.Location}
           }
         }
       }

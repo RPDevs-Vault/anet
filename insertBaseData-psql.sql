@@ -1876,6 +1876,9 @@ INSERT INTO "peoplePositions" ("personUuid", "positionUuid", "createdAt", "prima
   ('31cba227-f6c6-49e9-9483-fce441bea624', '5e2414d2-b440-4e43-85b3-d1c10222cb5d', CURRENT_TIMESTAMP, FALSE),
   ('31cba227-f6c6-49e9-9483-fce441bea624', '44ba17f5-fcf7-4743-a6b9-baf922b172c2', CURRENT_TIMESTAMP, FALSE);
 
+-- Fill in value of positionInReportUuid
+UPDATE "reportPeople" rp SET "positionInReportUuid" = (select uuid from positions where "currentPersonUuid" = rp."personUuid");
+
 -- Update the link-text indexes
 REFRESH MATERIALIZED VIEW CONCURRENTLY "mv_lts_attachments";
 -- authorizationGroups currently have no links

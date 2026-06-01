@@ -7301,6 +7301,16 @@
 		</sql>
 	</changeSet>
 
+	<changeSet id="add-position-to-report-people" author="fdelcastillo">
+		<addColumn tableName="reportPeople">
+			<column name="positionInReportUuid" type="${uuid_type}" />
+		</addColumn>
+		<addForeignKeyConstraint
+				baseTableName="reportPeople" constraintName="FK_reportPeople_positionInReport" baseColumnNames="positionInReportUuid"
+				referencedTableName="positions" referencedColumnNames="uuid"
+				onDelete="NO ACTION" onUpdate="NO ACTION" />
+	</changeSet>
+
 	<!-- Keep this change set as the last one in the change log;
 	     it will be re-run whenever it changes. -->
 	<changeSet id="set-up-full-text-search" runOnChange="true" author="gjvoosten">
