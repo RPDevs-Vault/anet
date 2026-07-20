@@ -7408,7 +7408,6 @@ __metadata:
     ts-node: "npm:10.9.2"
     typescript: "npm:6.0.3"
     use-debounce: "npm:10.1.1"
-    uuid: "npm:14.0.0"
     webdriverio: "npm:9.28.0"
     webpack: "npm:5.107.2"
     webpack-cli: "npm:7.0.3"
@@ -19931,7 +19930,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"uuid@npm:14.0.0, uuid@npm:^14.0.0":
+"uuid@npm:^14.0.0":
   version: 14.0.0
   resolution: "uuid@npm:14.0.0"
   bin:
